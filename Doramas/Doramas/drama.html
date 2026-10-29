@@ -1,0 +1,1148 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Uma coleção de dramas coreanos, histórias emocionantes, romances e corações partidos no Pop Universe.">
+
+  <title>Doramas | Pop Universe</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================
+       1. PALETA — CÉU CELESTE E TEMPESTADE
+    ===================================== */
+
+    :root {
+      --ceu: #b9e5fa;
+      --ceu-claro: #e7f6ff;
+      --gelo: #d8f1ff;
+      --azul: #76bde8;
+      --azul-medio: #367eae;
+      --azul-profundo: #174565;
+      --marinho: #10283b;
+      --noite: #111923;
+      --preto: #090e15;
+      --cinza: #aab7c3;
+      --cinza-claro: #d7e0e8;
+      --texto-escuro: #233849;
+      --texto-claro: #e8f2fa;
+      --vidro: rgba(15, 35, 52, 0.88);
+      --borda: rgba(169, 218, 247, 0.25);
+      --sombra: 0 16px 40px rgba(5, 16, 29, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      background: var(--noite);
+      color: var(--texto-claro);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 10% 0%,
+          rgba(107, 185, 231, 0.16),
+          transparent 40%
+        ),
+        radial-gradient(
+          ellipse at 95% 75%,
+          rgba(50, 91, 130, 0.14),
+          transparent 40%
+        ),
+        linear-gradient(
+          180deg,
+          #142e43 0%,
+          #101c2a 42%,
+          #090e15 100%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: #a9ddf5;
+      color: #10283b;
+    }
+
+    /* =====================================
+       2. EMOJIS DECORATIVOS ESPALHADOS
+    ===================================== */
+
+    .decoracoes {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .emoji {
+      position: absolute;
+      display: block;
+      opacity: 0.65;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.16));
+      animation: flutuar 6s ease-in-out infinite;
+      user-select: none;
+    }
+
+    .emoji:nth-child(3n) {
+      animation-delay: -2s;
+    }
+
+    .emoji:nth-child(4n) {
+      animation-delay: -4s;
+    }
+
+    .emoji:nth-child(5n) {
+      animation-duration: 8s;
+    }
+
+    @keyframes flutuar {
+      0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+      }
+
+      50% {
+        transform: translateY(-13px) rotate(5deg);
+      }
+    }
+
+    /* =====================================
+       3. CABEÇALHO
+    ===================================== */
+
+    .cabecalho {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 17px 6%;
+      background: rgba(9, 17, 27, 0.92);
+      border-bottom: 1px solid var(--borda);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      flex-shrink: 0;
+      color: var(--ceu);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--cinza-claro);
+    }
+
+    .navegacao {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .navegacao a {
+      position: relative;
+      padding: 5px 0;
+      color: #c2d2df;
+      font-size: 0.83rem;
+      transition: color 0.3s ease;
+    }
+
+    .navegacao a::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--ceu);
+      content: "";
+      transition: width 0.3s ease;
+    }
+
+    .navegacao a:hover,
+    .navegacao a.ativo {
+      color: var(--ceu);
+    }
+
+    .navegacao a:hover::after,
+    .navegacao a.ativo::after {
+      width: 100%;
+    }
+
+    /* =====================================
+       4. HERO — MELANCOLIA GELADA
+    ===================================== */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      min-height: 490px;
+      place-items: center;
+      padding: 95px 22px 100px;
+      overflow: hidden;
+      text-align: center;
+      background:
+        radial-gradient(
+          ellipse at 20% 0%,
+          rgba(255, 255, 255, 0.85),
+          transparent 36%
+        ),
+        radial-gradient(
+          ellipse at 80% 35%,
+          rgba(169, 221, 245, 0.8),
+          transparent 40%
+        ),
+        linear-gradient(
+          155deg,
+          #dff4ff 0%,
+          #acd9f1 48%,
+          #739ab8 100%
+        );
+      color: var(--texto-escuro);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.25;
+      background:
+        repeating-linear-gradient(
+          105deg,
+          transparent 0,
+          transparent 70px,
+          rgba(255, 255, 255, 0.4) 71px,
+          transparent 72px
+        );
+    }
+
+    .hero-conteudo {
+      position: relative;
+      z-index: 4;
+      max-width: 850px;
+    }
+
+    .sobretitulo {
+      margin-bottom: 14px;
+      color: var(--azul-profundo);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-bottom: 16px;
+      color: #102d46;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 4px;
+      text-shadow: 0 5px 25px rgba(255, 255, 255, 0.35);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    .linha-decorativa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 24px auto;
+      color: var(--azul-profundo);
+    }
+
+    .linha-decorativa::before,
+    .linha-decorativa::after {
+      width: 75px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      opacity: 0.55;
+    }
+
+    .hero .emoji {
+      color: #174565;
+      opacity: 0.7;
+    }
+
+    /* =====================================
+       5. TRANSIÇÃO ENTRE CÉU E TEMPESTADE
+    ===================================== */
+
+    .transicao {
+      position: relative;
+      height: 120px;
+      overflow: hidden;
+      background: linear-gradient(
+        180deg,
+        #739ab8 0%,
+        #355d7c 42%,
+        #172e43 100%
+      );
+    }
+
+    .transicao::before {
+      position: absolute;
+      top: -65px;
+      left: -5%;
+      width: 110%;
+      height: 130px;
+      border-radius: 50%;
+      background: #739ab8;
+      content: "";
+    }
+
+    .transicao .emoji {
+      z-index: 2;
+      color: var(--gelo);
+    }
+
+    /* =====================================
+       6. SEÇÃO DRAMA — TEMPESTADE NOTURNA
+    ===================================== */
+
+    .secao-drama {
+      position: relative;
+      isolation: isolate;
+      padding: 75px 6% 105px;
+      scroll-margin-top: 90px;
+      background:
+        radial-gradient(
+          ellipse at 0% 10%,
+          rgba(71, 135, 180, 0.14),
+          transparent 32%
+        ),
+        radial-gradient(
+          ellipse at 100% 55%,
+          rgba(83, 110, 139, 0.12),
+          transparent 32%
+        ),
+        linear-gradient(
+          180deg,
+          #172e43 0%,
+          #101c2a 45%,
+          #090e15 100%
+        );
+    }
+
+    .cabecalho-drama {
+      position: relative;
+      z-index: 4;
+      max-width: 760px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .cabecalho-drama .sobretitulo {
+      color: #8dcdf2;
+    }
+
+    .cabecalho-drama h2 {
+      margin-bottom: 8px;
+      color: var(--ceu);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.3rem, 7vw, 5rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: 5px;
+      text-shadow: 0 0 35px rgba(118, 189, 232, 0.17);
+    }
+
+    .cabecalho-drama p {
+      color: #c1d0dd;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .cabecalho-drama .linha-decorativa {
+      color: var(--ceu);
+    }
+
+    /* =====================================
+       7. GRID DOS DORAMAS
+    ===================================== */
+
+    .lista-drama {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 40px 30px;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    /* =====================================
+       8. CARDS
+    ===================================== */
+
+    .card-drama {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(169, 218, 247, 0.2);
+      border-radius: 7px;
+      background: linear-gradient(
+        155deg,
+        rgba(28, 53, 74, 0.98),
+        rgba(12, 22, 34, 0.99)
+      );
+      box-shadow: var(--sombra);
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .card-drama:hover {
+      transform: translateY(-7px);
+      border-color: rgba(169, 221, 245, 0.65);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    .poster-drama {
+      position: relative;
+      display: grid;
+      height: 450px;
+      overflow: hidden;
+      place-items: center;
+      background:
+        radial-gradient(
+          circle at 50% 30%,
+          rgba(188, 226, 248, 0.22),
+          transparent 40%
+        ),
+        linear-gradient(
+          145deg,
+          #355e7b,
+          #172d42 55%,
+          #0b111b
+        );
+    }
+
+    .poster-drama img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card-drama:hover .poster-drama img {
+      transform: scale(1.04);
+    }
+
+    /* =====================================
+       9. PÔSTERES PROVISÓRIOS
+    ===================================== */
+
+    .poster-placeholder {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 25px;
+      overflow: hidden;
+      color: var(--gelo);
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 50% 35%,
+          rgba(177, 222, 247, 0.19),
+          transparent 45%
+        ),
+        linear-gradient(
+          145deg,
+          #294e6a,
+          #152b40 60%,
+          #0a111a
+        );
+    }
+
+    .poster-placeholder::before,
+    .poster-placeholder::after {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(185, 225, 249, 0.15);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .poster-placeholder::before {
+      top: -120px;
+      right: -95px;
+    }
+
+    .poster-placeholder::after {
+      bottom: -140px;
+      left: -100px;
+      width: 290px;
+      height: 290px;
+    }
+
+    .poster-placeholder .simbolo {
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+    }
+
+    .poster-placeholder strong {
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .poster-placeholder small {
+      position: relative;
+      z-index: 1;
+      color: #a7c8df;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* =====================================
+       10. INFORMAÇÕES DOS DORAMAS
+    ===================================== */
+
+    .info-drama {
+      padding: 25px 23px 28px;
+    }
+
+    .metadados {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .metadado {
+      display: inline-block;
+      padding: 4px 9px;
+      border: 1px solid rgba(169, 218, 247, 0.22);
+      border-radius: 3px;
+      background: rgba(118, 189, 232, 0.08);
+      color: #b8def5;
+      font-size: 0.66rem;
+      letter-spacing: 0.2px;
+    }
+
+    .info-drama h3 {
+      margin-bottom: 13px;
+      color: #d4edff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .sinopse {
+      color: #bdcbd8;
+      font-size: 0.81rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .detalhe-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(169, 218, 247, 0.14);
+      color: #8ec9ed;
+      font-size: 0.73rem;
+    }
+
+    .detalhe-card span + span::before {
+      margin-right: 8px;
+      color: #647f96;
+      content: "•";
+    }
+
+    /* =====================================
+       11. EMOJIS NAS LATERAIS
+    ===================================== */
+
+    .margem-emojis {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .margem-emojis .emoji {
+      opacity: 0.36;
+    }
+
+    /* =====================================
+       12. RODAPÉ — NOITE E CORAÇÃO PARTIDO
+    ===================================== */
+
+    .rodape {
+      position: relative;
+      isolation: isolate;
+      padding: 55px 20px 45px;
+      overflow: hidden;
+      border-top: 1px solid rgba(169, 218, 247, 0.19);
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(65, 109, 146, 0.2),
+          transparent 65%
+        ),
+        #080d14;
+      text-align: center;
+    }
+
+    .rodape-conteudo {
+      position: relative;
+      z-index: 4;
+    }
+
+    .rodape p {
+      color: #c4dced;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+    }
+
+    .rodape .coracao {
+      display: block;
+      margin-top: 12px;
+      color: #8abfe1;
+      font-size: 0.9rem;
+    }
+
+    .rodape .creditos {
+      margin-top: 20px;
+      color: #788998;
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+    }
+
+    /* =====================================
+       13. RESPONSIVIDADE
+    ===================================== */
+
+    @media (max-width: 1050px) {
+      .cabecalho {
+        padding-right: 4%;
+        padding-left: 4%;
+      }
+
+      .navegacao {
+        gap: 14px;
+      }
+
+      .lista-drama {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px 24px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .cabecalho {
+        position: relative;
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 14px;
+      }
+
+      .logo {
+        font-size: 1.7rem;
+      }
+
+      .navegacao {
+        justify-content: center;
+        gap: 8px 16px;
+      }
+
+      .navegacao a {
+        font-size: 0.78rem;
+      }
+
+      .hero {
+        min-height: 390px;
+        padding: 75px 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.5rem, 15vw, 5rem);
+        letter-spacing: 2px;
+      }
+
+      .hero p {
+        font-size: 0.86rem;
+      }
+
+      .sobretitulo {
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+      }
+
+      .transicao {
+        height: 80px;
+      }
+
+      .secao-drama {
+        padding: 55px 17px 75px;
+      }
+
+      .cabecalho-drama {
+        margin-bottom: 35px;
+      }
+
+      .cabecalho-drama h2 {
+        letter-spacing: 3px;
+      }
+
+      .lista-drama {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 410px;
+        gap: 30px;
+      }
+
+      .poster-drama {
+        height: auto;
+        aspect-ratio: 3 / 4;
+      }
+
+      .info-drama {
+        padding: 23px 21px 26px;
+      }
+
+      .emoji {
+        font-size: 1.2rem !important;
+      }
+
+      .rodape {
+        padding: 42px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================
+       CABEÇALHO E NAVEGAÇÃO
+  ====================================== -->
+
+  <header class="cabecalho">
+    <a class="logo" href="index.html" aria-label="Pop Universe - início">
+      Pop <span>Universe</span>
+    </a>
+
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="index.html">Início</a>
+      <a href="animes.html">Animes</a>
+      <a href="jogos.html">Jogos</a>
+      <a href="doramas.html#drama" class="ativo" aria-current="page">Doramas</a>
+      <a href="filmes.html">Filmes</a>
+      <a href="series.html">Séries</a>
+      <a href="musica.html">Música</a>
+    </nav>
+  </header>
+
+  <!-- =====================================
+       HERO — CÉU AZUL-CELeste
+  ====================================== -->
+
+  <section class="hero" aria-labelledby="titulo-principal">
+
+    <div class="decoracoes" aria-hidden="true">
+      <span class="emoji" style="top: 12%; left: 7%; font-size: 2rem;">🥹</span>
+      <span class="emoji" style="top: 34%; left: 16%; font-size: 1.8rem;">🩵</span>
+      <span class="emoji" style="top: 65%; left: 6%; font-size: 2.1rem;">🌧️</span>
+      <span class="emoji" style="top: 15%; right: 9%; font-size: 2rem;">💙</span>
+      <span class="emoji" style="top: 52%; right: 6%; font-size: 2.1rem;">😭</span>
+      <span class="emoji" style="bottom: 10%; right: 20%; font-size: 1.7rem;">🩶</span>
+      <span class="emoji" style="bottom: 12%; left: 24%; font-size: 1.8rem;">🪻</span>
+      <span class="emoji" style="top: 7%; left: 45%; font-size: 1.5rem;">❄️</span>
+      <span class="emoji" style="top: 73%; right: 34%; font-size: 1.7rem;">💙</span>
+      <span class="emoji" style="top: 42%; left: 3%; font-size: 1.3rem;">😢</span>
+      <span class="emoji" style="top: 82%; right: 7%; font-size: 1.6rem;">☔</span>
+      <span class="emoji" style="top: 22%; right: 28%; font-size: 1.4rem;">🩵</span>
+    </div>
+
+    <div class="hero-conteudo">
+      <p class="sobretitulo">Histórias que deixam marcas</p>
+
+      <h1 id="titulo-principal">Doramas</h1>
+
+      <div class="linha-decorativa" aria-hidden="true">🌧️</div>
+
+      <p>
+        Algumas histórias parecem feitas de céu nublado, despedidas
+        e sentimentos que não cabem em palavras. Outras nos lembram
+        que até depois da tempestade ainda existe esperança.
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================
+       TRANSIÇÃO DO CÉU PARA A TEMPESTADE
+  ====================================== -->
+
+  <div class="transicao" aria-hidden="true">
+    <span class="emoji" style="top: 35%; left: 12%; font-size: 1.8rem;">💙</span>
+    <span class="emoji" style="top: 20%; left: 28%; font-size: 1.5rem;">🌧️</span>
+    <span class="emoji" style="top: 40%; left: 46%; font-size: 1.7rem;">⛈️</span>
+    <span class="emoji" style="top: 15%; right: 27%; font-size: 1.6rem;">🩵</span>
+    <span class="emoji" style="top: 35%; right: 10%; font-size: 1.8rem;">🌩️</span>
+  </div>
+
+  <!-- =====================================
+       SEÇÃO DRAMA
+  ====================================== -->
+
+  <main>
+    <section class="secao-drama" id="drama" aria-labelledby="titulo-drama">
+
+      <div class="margem-emojis" aria-hidden="true">
+        <span class="emoji" style="top: 2%; left: 2%; font-size: 1.7rem;">🩵</span>
+        <span class="emoji" style="top: 10%; right: 3%; font-size: 1.8rem;">💔</span>
+        <span class="emoji" style="top: 23%; left: 1%; font-size: 1.4rem;">🖤</span>
+        <span class="emoji" style="top: 33%; right: 2%; font-size: 1.6rem;">🥀</span>
+        <span class="emoji" style="top: 44%; left: 3%; font-size: 1.6rem;">🩶</span>
+        <span class="emoji" style="top: 53%; right: 1%; font-size: 1.5rem;">☂️</span>
+        <span class="emoji" style="top: 64%; left: 2%; font-size: 1.7rem;">😭</span>
+        <span class="emoji" style="top: 75%; right: 2%; font-size: 1.8rem;">💙</span>
+        <span class="emoji" style="top: 88%; left: 3%; font-size: 1.5rem;">❄️</span>
+        <span class="emoji" style="top: 94%; right: 3%; font-size: 1.6rem;">🥀</span>
+      </div>
+
+      <header class="cabecalho-drama">
+        <p class="sobretitulo">Quando a chuva encontra o coração</p>
+
+        <h2 id="titulo-drama">Drama</h2>
+
+        <div class="linha-decorativa" aria-hidden="true">💔</div>
+
+        <p>
+          Seis histórias escolhidas por mim. Seis universos de amor,
+          perda, destino, superação e sentimentos que permanecem
+          mesmo quando a tela escurece.
+        </p>
+      </header>
+
+      <div class="lista-drama">
+
+        <!-- 1. QUATRO MÃOS, DUAS SONATAS -->
+
+        <article class="card-drama">
+          <div class="poster-drama">
+            <div class="poster-placeholder">
+              <span class="simbolo" aria-hidden="true">🎹</span>
+              <strong>Quatro Mãos,<br>Duas Sonatas</strong>
+              <small>Pôster em breve</small>
+            </div>
+          </div>
+
+          <div class="info-drama">
+            <div class="metadados">
+              <span class="metadado">2026</span>
+              <span class="metadado">12 episódios</span>
+              <span class="metadado">Musical</span>
+            </div>
+
+            <h3>Quatro Mãos, Duas Sonatas</h3>
+
+            <p class="sinopse">
+              Em uma prestigiada escola de música, dois jovens pianistas
+              de mundos diferentes se encontram. A chegada de um novo
+              talento transforma a rotina e desperta rivalidade,
+              amizade e sentimentos inesperados. Entre sonhos,
+              desafios e melodias, os dois precisam descobrir
+              o que realmente desejam para o próprio futuro.
+            </p>
+
+            <div class="detalhe-card">
+              <span>Coreia do Sul</span>
+              <span>Drama musical</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. DESGRAÇA AO SEU DISPOR -->
+
+        <article class="card-drama">
+          <div class="poster-drama">
+            <div class="poster-placeholder">
+              <span class="simbolo" aria-hidden="true">🌙</span>
+              <strong>Desgraça ao<br>Seu Dispor</strong>
+              <small>Pôster em breve</small>
+            </div>
+          </div>
+
+          <div class="info-drama">
+            <div class="metadados">
+              <span class="metadado">2021</span>
+              <span class="metadado">16 episódios</span>
+              <span class="metadado">Fantasia</span>
+            </div>
+
+            <h3>Desgraça ao Seu Dispor</h3>
+
+            <p class="sinopse">
+              Tak Dong-kyung recebe uma notícia devastadora sobre sua
+              saúde e, em um momento de desespero, deseja que o mundo
+              acabe. Seu pedido chega até Myul-mang, um ser sobrenatural
+              ligado à destruição. Os dois firmam um contrato de cem dias,
+              mas a convivência faz surgir sentimentos que desafiam
+              o destino e mudam a maneira como enxergam a própria vida.
+            </p>
+
+            <div class="detalhe-card">
+              <span>Coreia do Sul</span>
+              <span>Romance fantástico</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. GOBLIN -->
+
+        <article class="card-drama">
+          <div class="poster-drama">
+            <div class="poster-placeholder">
+              <span class="simbolo" aria-hidden="true">❄️</span>
+              <strong>Goblin</strong>
+              <small>Pôster em breve</small>
+            </div>
+          </div>
+
+          <div class="info-drama">
+            <div class="metadados">
+              <span class="metadado">2016</span>
+              <span class="metadado">16 episódios</span>
+              <span class="metadado">Fantasia</span>
+            </div>
+
+            <h3>Goblin</h3>
+
+            <p class="sinopse">
+              Kim Shin é um general condenado à imortalidade e passa
+              séculos esperando encontrar a pessoa capaz de libertá-lo
+              dessa existência. Essa pessoa é Ji Eun-tak, uma jovem
+              que consegue enxergar fantasmas. Enquanto os destinos
+              dos dois se cruzam, um ceifador de almas também entra
+              nessa história de mistérios, humor, perdas e amor.
+            </p>
+
+            <div class="detalhe-card">
+              <span>Coreia do Sul</span>
+              <span>Fantasia e romance</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. TUDO BEM NÃO SER NORMAL -->
+
+        <article class="card-drama">
+          <div class="poster-drama">
+            <div class="poster-placeholder">
+              <span class="simbolo" aria-hidden="true">🦋</span>
+              <strong>Tudo Bem<br>Não Ser Normal</strong>
+              <small>Pôster em breve</small>
+            </div>
+          </div>
+
+          <div class="info-drama">
+            <div class="metadados">
+              <span class="metadado">2020</span>
+              <span class="metadado">16 episódios</span>
+              <span class="metadado">Psicológico</span>
+            </div>
+
+            <h3>Tudo Bem Não Ser Normal</h3>
+
+            <p class="sinopse">
+              Moon Gang-tae trabalha em um hospital psiquiátrico e
+              dedica grande parte da vida a cuidar do irmão mais velho.
+              Sua rotina muda ao conhecer Ko Moon-young, uma escritora
+              de livros infantis conhecida por suas histórias sombrias.
+              Juntos, eles enfrentam traumas e segredos do passado
+              e descobrem que a cura pode começar com a aceitação
+              das próprias imperfeições.
+            </p>
+
+            <div class="detalhe-card">
+              <span>Coreia do Sul</span>
+              <span>Drama psicológico</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. SE A VIDA TE DER TANGERINAS -->
+
+        <article class="card-drama">
+          <div class="poster-drama">
+            <div class="poster-placeholder">
+              <span class="simbolo" aria-hidden="true">🌧️</span>
+              <strong>Se a Vida Te<br>Der Tangerinas</strong>
+              <small>Pôster em breve</small>
+            </div>
+          </div>
+
+          <div class="info-drama">
+            <div class="metadados">
+              <span class="metadado">2025</span>
+              <span class="metadado">16 episódios</span>
+              <span class="metadado">Slice of life</span>
+            </div>
+
+            <h3>Se a Vida Te Der Tangerinas</h3>
+
+            <p class="sinopse">
+              Na ilha de Jeju, a sonhadora Ae-sun e o dedicado Gwan-sik
+              atravessam juntos as diferentes estações da vida.
+              Ao longo das décadas, enfrentam perdas, dificuldades,
+              alegrias e mudanças. Uma história sensível sobre amor,
+              família, escolhas e a beleza de continuar caminhando
+              mesmo quando a vida não segue o caminho esperado.
+            </p>
+
+            <div class="detalhe-card">
+              <span>Coreia do Sul</span>
+              <span>Drama familiar</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. A ESPOSA DO MEU MARIDO -->
+
+        <article class="card-drama">
+          <div class="poster-drama">
+            <div class="poster-placeholder">
+              <span class="simbolo" aria-hidden="true">🥀</span>
+              <strong>A Esposa do<br>Meu Marido</strong>
+              <small>Pôster em breve</small>
+            </div>
+          </div>
+
+          <div class="info-drama">
+            <div class="metadados">
+              <span class="metadado">2024</span>
+              <span class="metadado">16 episódios</span>
+              <span class="metadado">Vingança</span>
+            </div>
+
+            <h3>A Esposa do Meu Marido</h3>
+
+            <p class="sinopse">
+              Depois de descobrir a traição do marido com sua melhor
+              amiga, Kang Ji-won tem um fim trágico. Inesperadamente,
+              ela retorna dez anos ao passado e recebe uma nova chance
+              de mudar o próprio destino. Decidida a não repetir os
+              mesmos erros, começa a planejar sua vingança e encontra
+              apoio em Yu Ji-hyuk, enquanto segredos e sentimentos
+              complicam seus planos.
+            </p>
+
+            <div class="detalhe-card">
+              <span>Coreia do Sul</span>
+              <span>Romance e vingança</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================
+       RODAPÉ — DEPOIS DA TEMPESTADE
+  ====================================== -->
+
+  <footer class="rodape">
+
+    <div class="decoracoes" aria-hidden="true">
+      <span class="emoji" style="top: 15%; left: 8%; font-size: 1.8rem;">🖤</span>
+      <span class="emoji" style="top: 35%; left: 23%; font-size: 1.5rem;">💔</span>
+      <span class="emoji" style="top: 12%; right: 13%; font-size: 1.8rem;">🥀</span>
+      <span class="emoji" style="top: 48%; right: 7%; font-size: 1.7rem;">🩶</span>
+      <span class="emoji" style="bottom: 12%; left: 38%; font-size: 1.5rem;">🩵</span>
+      <span class="emoji" style="bottom: 15%; right: 33%; font-size: 1.5rem;">☔</span>
+    </div>
+
+    <div class="rodape-conteudo">
+      <p>Mesmo depois da chuva, algumas histórias permanecem. 🩵</p>
+      <span class="coracao">Feito com carinho, lágrimas e doramas ♡</span>
+      <p class="creditos">POP UNIVERSE · UM UNIVERSO DE EMOÇÕES</p>
+    </div>
+  </footer>
+
+</body>
+</html>

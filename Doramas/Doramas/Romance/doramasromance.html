@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doramas Romance | Pop Universe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           CONFIGURAÇÕES GERAIS
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fffafb;
+            color: #f9e0ec;
+            font-family: Georgia, 'Times New Roman', serif;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            width: 100%;
+            padding: 28px 70px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-bottom: 1px solid #f1dce7;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #d58aae;
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 2rem;
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #806875;
+
+            text-decoration: none;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d58aae;
+        }
+
+
+        /* =========================================================
+           MENU DE GÊNEROS DOS DORAMAS
+        ========================================================= */
+
+        .menu-doramas {
+            position: relative;
+        }
+
+        .generos-doramas {
+            position: absolute;
+
+            /* CORREÇÃO:
+               sem espaço entre Doramas e o submenu */
+
+            top: 100%;
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                translateY(8px);
+
+            min-width: 190px;
+
+            padding: 10px 0;
+
+            background: rgba(38, 23, 67, 0.98);
+
+            border: 1px solid #e9a6c8;
+
+            border-radius:
+                0 0 12px 12px;
+
+            box-shadow:
+                0 12px 28px
+                rgba(38, 23, 67, 0.25);
+
+            display: flex;
+
+            flex-direction: column;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0.25s ease;
+
+            z-index: 2000;
+        }
+
+        .menu-doramas:hover .generos-doramas,
+        .menu-doramas:focus-within .generos-doramas {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
+
+        .generos-doramas a {
+
+            display: block;
+
+            padding: 9px 20px;
+
+            color: #f8dce9 !important;
+
+            text-decoration: none;
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 17px;
+
+            letter-spacing: 0.5px;
+
+            white-space: nowrap;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                padding-left 0.2s ease;
+        }
+
+        .generos-doramas a:hover {
+
+            background:
+                rgba(252, 198, 225, 0.999);
+
+            color: #ffffff !important;
+
+            padding-left: 25px;
+        }
+
+
+        /* =========================================================
+           PÁGINA DE ROMANCE
+        ========================================================= */
+
+        .pagina-romance {
+
+            position: relative;
+
+            min-height: 100vh;
+
+            padding: 90px 60px 130px;
+
+            background:
+
+                radial-gradient(
+                    circle at 8% 12%,
+                    rgb(233, 166, 200),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 92% 25%,
+                    rgba(248, 220, 233, 0.45),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(233, 166, 200, 0.08),
+                    transparent 35%
+                ),
+
+                #fffafb;
+        }
+
+
+        /* =========================================================
+           FLORES DECORATIVAS
+        ========================================================= */
+
+        .flor {
+            position: absolute;
+
+            pointer-events: none;
+            user-select: none;
+
+            opacity: 0.38;
+
+            z-index: 0;
+        }
+
+        .flor-1 {
+            top: 70px;
+            left: 4%;
+
+            font-size: 3.5rem;
+
+            transform: rotate(-15deg);
+        }
+
+        .flor-2 {
+            top: 160px;
+            right: 5%;
+
+            font-size: 3rem;
+
+            transform: rotate(18deg);
+        }
+
+        .flor-3 {
+            top: 520px;
+            left: 2%;
+
+            font-size: 2.2rem;
+
+            color: #d8bd8a;
+        }
+
+        .flor-4 {
+            top: 850px;
+            right: 3%;
+
+            font-size: 3.5rem;
+
+            transform: rotate(25deg);
+        }
+
+        .flor-5 {
+            top: 1250px;
+            left: 5%;
+
+            font-size: 2.5rem;
+
+            transform: rotate(-20deg);
+        }
+
+        .flor-6 {
+            top: 1600px;
+            right: 5%;
+
+            font-size: 3rem;
+
+            transform: rotate(15deg);
+        }
+
+
+        /* =========================================================
+           TÍTULO PRINCIPAL
+        ========================================================= */
+
+        .cabecalho-romance {
+
+            position: relative;
+            z-index: 1;
+
+            text-align: center;
+
+            max-width: 850px;
+
+            margin: 0 auto 75px;
+        }
+
+        .decoracao-titulo {
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 18px;
+
+            color: #e9a6c8;
+
+            font-size: 1.4rem;
+
+            margin-bottom: 18px;
+        }
+
+        .cabecalho-romance h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            color: #c8759f;
+
+            font-size: 4.4rem;
+
+            font-weight: 600;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 18px;
+        }
+
+        .subtitulo-romance {
+
+            color: #8b6878;
+
+            font-family:
+                'Playfair Display',
+                Georgia,
+                serif;
+
+            font-size: 1.1rem;
+
+            line-height: 1.9;
+
+            font-style: italic;
+        }
+
+
+        /* =========================================================
+           DIVISOR FLORAL
+        ========================================================= */
+
+        .divisor-floral {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            max-width: 650px;
+
+            margin: 0 auto 70px;
+
+            color: #e9a6c8;
+
+            font-size: 1.1rem;
+        }
+
+        .divisor-floral::before,
+        .divisor-floral::after {
+
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #edc7d8
+                );
+        }
+
+        .divisor-floral::after {
+
+            background:
+                linear-gradient(
+                    to left,
+                    transparent,
+                    #edc7d8
+                );
+        }
+
+
+        /* =========================================================
+           LISTA DE DORAMAS
+        ========================================================= */
+
+        .lista-romance {
+
+            position: relative;
+            z-index: 1;
+
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 55px;
+        }
+
+
+        /* =========================================================
+           CARD INDIVIDUAL
+        ========================================================= */
+
+        .dorama-romance {
+
+            display: grid;
+
+            grid-template-columns: 330px 1fr;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border: 1px solid #f0d8e4;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 12px 35px
+                rgba(185, 111, 150, 0.10);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            position: relative;
+        }
+
+        .dorama-romance:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(185, 111, 150, 0.17);
+        }
+
+
+        /* =========================================================
+           DETALHE FLORAL DO CARD
+        ========================================================= */
+
+        .dorama-romance::after {
+
+            content: "✿";
+
+            position: absolute;
+
+            right: 25px;
+            top: 18px;
+
+            color: #e9a6c8;
+
+            font-size: 1.2rem;
+
+            opacity: 0.55;
+
+            z-index: 3;
+        }
+
+
+        /* =========================================================
+           POSTER
+        ========================================================= */
+
+        .poster-romance {
+
+            height: 500px;
+
+            background: #f8dce9;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .poster-romance img {
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            /* Mantém o pôster INTEIRO, sem cortes */
+
+            object-fit: contain;
+
+            object-position: center;
+
+            transition:
+                transform 0.5s ease;
+        }
+
+        .dorama-romance:hover
+        .poster-romance img {
+
+            transform: scale(1.025);
+        }
+
+
+        /* =========================================================
+           INFORMAÇÕES
+        ========================================================= */
+
+        .info-romance {
+
+            padding: 45px 50px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .numero-dorama {
+
+            color: #e0a1bd;
+
+            font-size: 0.78rem;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .info-romance h2 {
+
+            color: #b96f96;
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 2.7rem;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+
+            padding-right: 25px;
+        }
+
+        .ano-dorama {
+
+            color: #9b7b89;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+        .generos-romance {
+
+            color: #c8759f;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================================
+           TÍTULOS INTERNOS
+        ========================================================= */
+
+        .titulo-info {
+
+            color: #b96f96;
+
+            font-family:
+                'Playfair Display',
+                Georgia,
+                serif;
+
+            font-size: 1rem;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================================
+           SINOPSE
+        ========================================================= */
+
+        .sinopse {
+
+            color: #806875;
+
+            font-size: 0.96rem;
+
+            line-height: 1.9;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================================
+           ELENCO
+        ========================================================= */
+
+        .elenco {
+
+            color: #806875;
+
+            font-size: 0.88rem;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================================
+           DETALHES
+        ========================================================= */
+
+        .detalhes-romance {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px 25px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #f2dce6;
+        }
+
+        .detalhes-romance p {
+
+            color: #806875;
+
+            font-size: 0.84rem;
+
+            line-height: 1.6;
+        }
+
+        .detalhes-romance strong {
+
+            color: #b96f96;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           FRASE FINAL
+        ========================================================= */
+
+        .frase-romance {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 800px;
+
+            margin: 100px auto 0;
+
+            padding: 55px 40px;
+
+            text-align: center;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.96),
+                    rgba(255,245,249,0.96)
+                );
+
+            border: 1px solid #f0d8e4;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(185, 111, 150, 0.08);
+        }
+
+        .frase-romance .flores {
+
+            color: #e9a6c8;
+
+            font-size: 1.5rem;
+
+            letter-spacing: 8px;
+
+            margin-bottom: 20px;
+        }
+
+        .frase-romance p {
+
+            color: #8b6878;
+
+            font-family:
+                'Playfair Display',
+                Georgia,
+                serif;
+
+            font-size: 1.15rem;
+
+            line-height: 1.9;
+
+            font-style: italic;
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            header {
+
+                padding: 25px 35px;
+            }
+
+            nav {
+
+                gap: 18px;
+            }
+
+            .pagina-romance {
+
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .dorama-romance {
+
+                grid-template-columns:
+                    270px 1fr;
+            }
+
+            .poster-romance,
+            .poster-romance img {
+
+                height: 430px;
+            }
+
+            .info-romance {
+
+                padding: 35px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 20px;
+
+                padding: 25px 20px;
+            }
+
+            nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+            .generos-doramas {
+                left: 50%;
+            }
+
+            .pagina-romance {
+
+                padding:
+                    60px 20px 90px;
+            }
+
+            .cabecalho-romance h1 {
+
+                font-size: 3.2rem;
+
+                letter-spacing: 3px;
+            }
+
+            .dorama-romance {
+
+                grid-template-columns: 1fr;
+            }
+
+            .poster-romance,
+            .poster-romance img {
+
+                height: 500px;
+            }
+
+            .info-romance {
+
+                padding: 30px 25px;
+            }
+
+            .info-romance h2 {
+
+                font-size: 2.3rem;
+            }
+
+            .detalhes-romance {
+
+                grid-template-columns: 1fr;
+            }
+
+            .frase-romance {
+
+                padding:
+                    45px 25px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            Pop Universe
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="animes.html">
+                Animes
+            </a>
+
+            <a href="jogos.html">
+                Jogos
+            </a>
+
+
+            <!-- MENU DORAMAS COM DROPDOWN -->
+
+            <div class="menu-doramas">
+
+                <a href="doramas.html">
+                    Doramas
+                </a>
+
+                <div class="generos-doramas">
+
+                    <a href="doramasromance.html">
+                        Romance
+                    </a>
+
+                    <a href="doramas.html#comedia">
+                        Comédia
+                    </a>
+
+                    <a href="doramas.html#drama">
+                        Drama
+                    </a>
+
+                    <a href="doramas.html#acao">
+                        Ação
+                    </a>
+
+                    <a href="doramas.html#thriller">
+                        Thriller
+                    </a>
+
+                    <a href="doramas.html#fantasia">
+                        Fantasia
+                    </a>
+
+                    <a href="doramas.html#historico">
+                        Histórico
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="filmes.html">
+                Filmes
+            </a>
+
+            <a href="series.html">
+                Séries
+            </a>
+
+            <a href="musica.html">
+                Música
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         PÁGINA DE ROMANCE
+    ========================================================= -->
+
+    <main class="pagina-romance">
+
+
+        <!-- FLORES DECORATIVAS -->
+
+        <div class="flor flor-1">
+            🌸
+        </div>
+
+        <div class="flor flor-2">
+            🌷
+        </div>
+
+        <div class="flor flor-3">
+            ✿
+        </div>
+
+        <div class="flor flor-4">
+            🌸
+        </div>
+
+        <div class="flor flor-5">
+            🌷
+        </div>
+
+        <div class="flor flor-6">
+            ✿
+        </div>
+
+
+        <!-- =====================================================
+             CABEÇALHO
+        ====================================================== -->
+
+        <section class="cabecalho-romance">
+
+            <div class="decoracao-titulo">
+
+                <span>🌸</span>
+                <span>✿</span>
+                <span>🌷</span>
+
+            </div>
+
+            <h1>
+                Romance
+            </h1>
+
+            <p class="subtitulo-romance">
+
+                Histórias de encontros, sentimentos,
+                descobertas e amores que florescem
+                de maneiras inesperadas.
+
+            </p>
+
+        </section>
+
+
+        <!-- DIVISOR -->
+
+        <div class="divisor-floral">
+            ✿
+        </div>
+
+
+        <!-- =====================================================
+             LISTA DOS 5 DORAMAS
+        ====================================================== -->
+
+        <section class="lista-romance">
+
+
+            <!-- =================================================
+                 DORAMA 1
+            ================================================== -->
+
+            <article class="dorama-romance">
+
+
+                <div class="poster-romance">
+
+                    <img
+                        src="imagens/assustadoramente-apaixonados.jpg"
+                        alt="Poster de Assustadoramente Apaixonados"
+                    >
+
+                </div>
+
+
+                <div class="info-romance">
+
+
+                    <div class="numero-dorama">
+                        Romance · 01
+                    </div>
+
+                    <h2>
+                        Assustadoramente Apaixonados
+                    </h2>
+
+                    <p class="ano-dorama">
+                        2026 · Série limitada
+                    </p>
+
+                    <div class="generos-romance">
+                        Romance · Comédia · Fantasia · Mistério
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+                    <p class="sinopse">
+
+                        Uma promotora de elite que consegue enxergar
+                        fantasmas cruza o caminho de um herdeiro
+                        assombrado. Depois de descobrirem que o toque
+                        entre os dois produz um efeito inesperado,
+                        eles passam a trabalhar juntos para solucionar
+                        casos de assassinato não resolvidos — enquanto
+                        uma aproximação romântica começa a surgir.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+                    <p class="elenco">
+                        Park Eun-bin · Yang Se-jong · Ong Seong-wu
+                    </p>
+
+
+                    <div class="detalhes-romance">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            12
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série limitada
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 DORAMA 2
+            ================================================== -->
+
+            <article class="dorama-romance">
+
+
+                <div class="poster-romance">
+
+                    <img
+                        src="imagens/um-grude-de-amor.jpg"
+                        alt="Poster de Um Grude de Amor"
+                    >
+
+                </div>
+
+
+                <div class="info-romance">
+
+
+                    <div class="numero-dorama">
+                        Romance · 02
+                    </div>
+
+                    <h2>
+                        Um Grude de Amor
+                    </h2>
+
+                    <p class="ano-dorama">
+                        2026 · Série limitada
+                    </p>
+
+                    <div class="generos-romance">
+                        Romance · Comédia · Ação · Suspense
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+                    <p class="sinopse">
+
+                        Uma promotora ambiciosa perde a memória e
+                        acaba vivendo em uma pequena cidade ao lado
+                        de um treinador de boxe que aparece afirmando
+                        ser seu namorado. Entre desconfiança, segredos,
+                        perigos e uma convivência cada vez mais próxima,
+                        os dois começam a descobrir se aquela situação
+                        estranha pode realmente se transformar em amor.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+                    <p class="elenco">
+                        Jung Hae-in · Ha Young · Heo Sung-tae
+                    </p>
+
+
+                    <div class="detalhes-romance">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            12
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série limitada
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 DORAMA 3
+            ================================================== -->
+
+            <article class="dorama-romance">
+
+
+                <div class="poster-romance">
+
+                    <img
+                        src="imagens/beijo-explosivo.jpg"
+                        alt="Poster de Beijo Explosivo"
+                    >
+
+                </div>
+
+
+                <div class="info-romance">
+
+
+                    <div class="numero-dorama">
+                        Romance · 03
+                    </div>
+
+                    <h2>
+                        Beijo Explosivo
+                    </h2>
+
+                    <p class="ano-dorama">
+                        2025 · Série limitada
+                    </p>
+
+                    <div class="generos-romance">
+                        Romance · Comédia · Drama · Ambiente de trabalho
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+                    <p class="sinopse">
+
+                        Depois de um encontro intenso em Jeju,
+                        o destino coloca novamente frente a frente
+                        uma jovem que precisa esconder sua verdadeira
+                        situação e um herdeiro que trabalha na mesma
+                        empresa. Um beijo inesperado desencadeia uma
+                        série de mal-entendidos, segredos e sentimentos
+                        que ficam cada vez mais difíceis de esconder.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+                    <p class="elenco">
+                        Jang Ki-yong · Ahn Eun-jin · Kim Mu-jun
+                    </p>
+
+
+                    <div class="detalhes-romance">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            14
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série limitada
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 DORAMA 4
+            ================================================== -->
+
+            <article class="dorama-romance">
+
+
+                <div class="poster-romance">
+
+                    <img
+                        src="imagens/bon-appetit-vossa-majestade.jpg"
+                        alt="Poster de Bon Appétit, Vossa Majestade"
+                    >
+
+                </div>
+
+
+                <div class="info-romance">
+
+
+                    <div class="numero-dorama">
+                        Romance · 04
+                    </div>
+
+                    <h2>
+                        Bon Appétit, Vossa Majestade
+                    </h2>
+
+                    <p class="ano-dorama">
+                        2025 · Série limitada
+                    </p>
+
+                    <div class="generos-romance">
+                        Romance · Fantasia · Histórico · Drama
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+                    <p class="sinopse">
+
+                        Uma chef francesa extremamente talentosa é
+                        transportada inesperadamente para a era Joseon.
+                        Ao chegar ao palácio, ela precisa cozinhar para
+                        um rei conhecido por seu temperamento difícil e
+                        seu paladar exigente. Entre disputas da corte,
+                        pratos modernos e perigos reais, uma relação
+                        inesperada começa a se desenvolver.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+                    <p class="elenco">
+                        Lim Yoon-a · Lee Chae-min · Kang Hanna
+                    </p>
+
+
+                    <div class="detalhes-romance">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            12
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série limitada
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 DORAMA 5
+            ================================================== -->
+
+            <article class="dorama-romance">
+
+
+                <div class="poster-romance">
+
+                    <img
+                        src="imagens/rainha-das-lagrimas.jpg"
+                        alt="Poster de Rainha das Lágrimas"
+                    >
+
+                </div>
+
+
+                <div class="info-romance">
+
+
+                    <div class="numero-dorama">
+                        Romance · 05
+                    </div>
+
+                    <h2>
+                        Rainha das Lágrimas
+                    </h2>
+
+                    <p class="ano-dorama">
+                        2024
+                    </p>
+
+                    <div class="generos-romance">
+                        Romance · Comédia · Drama · Casamento
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+                    <p class="sinopse">
+
+                        Uma poderosa herdeira de uma rede de lojas
+                        de departamento e seu marido, vindo de uma
+                        cidade pequena, atravessam uma profunda crise
+                        no casamento. Quando acontecimentos inesperados
+                        mudam suas vidas, os dois precisam encarar
+                        novamente os sentimentos que pareciam ter
+                        desaparecido entre eles.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+                    <p class="elenco">
+                        Kim Soo-hyun · Kim Ji-won · Park Sung-hoon
+                    </p>
+
+
+                    <div class="detalhes-romance">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            16
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             FRASE FINAL
+        ====================================================== -->
+
+        <section class="frase-romance">
+
+            <div class="flores">
+                🌸 ✿ 🌷 ✿ 🌸
+            </div>
+
+            <p>
+                Porque algumas histórias de amor
+                merecem ser guardadas para sempre.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

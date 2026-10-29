@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doramas | Pop Universe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+
+        /* =========================================================
+           CONFIGURAÇÕES GERAIS
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            background: #fffafb;
+            color: #5a4650;
+            font-family: Georgia, 'Times New Roman', serif;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            width: 100%;
+            padding: 28px 70px;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid #f1dce7;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: relative;
+            z-index: 1000;
+        }
+
+
+        .logo {
+            color: #e9a6c8;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        nav > a,
+        .menu-doramas > a {
+            color: #806875;
+            text-decoration: none;
+            font-size: 0.88rem;
+            letter-spacing: 1.5px;
+            transition: 0.3s ease;
+        }
+
+
+        nav > a:hover,
+        .menu-doramas > a:hover {
+            color: #e9a6c8;
+        }
+
+
+        /* =========================================================
+           MENU DROPDOWN DOS GÊNEROS
+        ========================================================= */
+
+        .menu-doramas {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .menu-doramas > a {
+            display: block;
+        }
+
+
+        .generos-doramas {
+            position: absolute;
+
+            top: 100%;
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                translateY(8px);
+
+            min-width: 190px;
+            padding: 14px 0;
+
+            background: rgba(255, 255, 255, 0.98);
+
+            border: 1px solid #f0cbdc;
+            border-radius: 12px;
+
+            box-shadow:
+                0 12px 30px rgba(185, 111, 150, 0.18),
+                0 0 18px rgba(233, 166, 200, 0.12);
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                visibility 0.3s ease;
+
+            z-index: 1000;
+        }
+
+
+        .generos-doramas::before {
+            content: "";
+
+            position: absolute;
+
+            top: -6px;
+            left: 50%;
+
+            width: 11px;
+            height: 11px;
+
+            transform:
+                translateX(-50%)
+                rotate(45deg);
+
+            background: #ffffff;
+
+            border-left: 1px solid #f0cbdc;
+            border-top: 1px solid #f0cbdc;
+        }
+
+
+        .generos-doramas a {
+            display: block;
+
+            padding: 9px 22px;
+
+            color: #8b6878;
+
+            font-family: Georgia, 'Times New Roman', serif;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 1px;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            transition: 0.25s ease;
+        }
+
+
+        .generos-doramas a:hover {
+            color: #c8759f;
+
+            background: rgba(233, 166, 200, 0.12);
+
+            text-shadow:
+                0 0 8px rgba(233, 166, 200, 0.35);
+        }
+
+
+        .menu-doramas:hover .generos-doramas,
+        .menu-doramas:focus-within .generos-doramas {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           PÁGINA DOS DORAMAS
+        ========================================================= */
+
+        .pagina-doramas {
+            position: relative;
+
+            min-height: 100vh;
+
+            padding: 90px 60px 120px;
+
+            background:
+
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(233, 166, 200, 0.08),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 90% 70%,
+                    rgba(216, 189, 138, 0.07),
+                    transparent 28%
+                ),
+
+                #fffafb;
+        }
+
+
+        /* =========================================================
+           FLORES DECORATIVAS
+        ========================================================= */
+
+        .flor {
+            position: absolute;
+
+            color: #e9a6c8;
+
+            opacity: 0.35;
+
+            pointer-events: none;
+
+            user-select: none;
+        }
+
+
+        .flor-1 {
+            top: 80px;
+            left: 5%;
+
+            font-size: 3rem;
+
+            transform: rotate(-15deg);
+        }
+
+
+        .flor-2 {
+            top: 180px;
+            right: 7%;
+
+            font-size: 2.5rem;
+
+            transform: rotate(18deg);
+        }
+
+
+        .flor-3 {
+            top: 600px;
+            left: 3%;
+
+            font-size: 2rem;
+
+            color: #d8bd8a;
+        }
+
+
+        .flor-4 {
+            top: 800px;
+            right: 4%;
+
+            font-size: 3rem;
+
+            transform: rotate(25deg);
+        }
+
+
+        /* =========================================================
+           TÍTULO PRINCIPAL
+        ========================================================= */
+
+        .titulo-doramas {
+            text-align: center;
+
+            margin-bottom: 80px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 22px;
+        }
+
+
+        .titulo-doramas h2 {
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 4rem;
+
+            font-weight: 600;
+
+            letter-spacing: 5px;
+
+            color: #b96f96;
+        }
+
+
+        .titulo-doramas span {
+            color: #e9a6c8;
+
+            font-size: 1.4rem;
+        }
+
+
+        /* =========================================================
+           LISTA DOS GÊNEROS
+        ========================================================= */
+
+        .lista-doramas {
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 50px 35px;
+        }
+
+
+        /* =========================================================
+           CADA GÊNERO
+        ========================================================= */
+
+        .genero-dorama {
+            text-align: center;
+
+            position: relative;
+        }
+
+
+        .genero-dorama h3 {
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 2rem;
+
+            font-weight: 600;
+
+            color: #b96f96;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .genero-dorama h3::after {
+            content: "✿";
+
+            display: block;
+
+            color: #e9a6c8;
+
+            font-size: 0.9rem;
+
+            margin-top: 7px;
+        }
+
+
+        /* =========================================================
+           CARD DO DORAMA
+        ========================================================= */
+
+        .dorama-card {
+            background: #ffffff;
+
+            border: 1px solid #f0d8e4;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px
+                rgba(185, 111, 150, 0.10);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            max-width: 350px;
+
+            margin: 0 auto;
+        }
+
+
+        .dorama-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 18px 35px
+                rgba(185, 111, 150, 0.18);
+        }
+
+
+        /* =========================================================
+           POSTER
+        ========================================================= */
+
+        .poster {
+            height: 450px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8dce9,
+                    #fff5f9
+                );
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .poster::before {
+            content: "🌸";
+
+            position: absolute;
+
+            font-size: 5rem;
+
+            opacity: 0.25;
+        }
+
+
+        .poster span {
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            color: #b96f96;
+
+            font-size: 1.3rem;
+
+            letter-spacing: 2px;
+
+            z-index: 1;
+        }
+
+
+        /* =========================================================
+           INFORMAÇÕES DO CARD
+        ========================================================= */
+
+        .info-dorama {
+            padding: 25px;
+        }
+
+
+        .info-dorama h4 {
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 1.9rem;
+
+            font-weight: 600;
+
+            color: #a85f88;
+
+            margin-bottom: 10px;
+        }
+
+
+        .generos {
+            color: #c8759f;
+
+            font-size: 0.85rem;
+
+            letter-spacing: 0.7px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .descricao {
+            color: #806875;
+
+            font-size: 0.95rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           ROMANCE — MAIS FLORAL E DELICADO
+        ========================================================= */
+
+        .genero-romance h3 {
+            color: #c8759f;
+
+            font-size: 2.2rem;
+        }
+
+
+        .genero-romance .dorama-card {
+            border-color: #e9a6c8;
+
+            box-shadow:
+                0 10px 30px
+                rgba(233, 166, 200, 0.18);
+        }
+
+
+        .genero-romance .poster::before {
+            content: "🌸  ✿  🌷";
+
+            font-size: 3rem;
+
+            opacity: 0.22;
+        }
+
+
+        /* =========================================================
+           SEÇÃO ESPECIAL DE ROMANCE
+        ========================================================= */
+
+        .romance {
+            max-width: 850px;
+
+            margin: 120px auto 0;
+
+            padding: 65px 50px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.96),
+                    rgba(255,245,249,0.96)
+                );
+
+            border: 1px solid #f0d8e4;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(185, 111, 150, 0.10);
+        }
+
+
+        .romance h3 {
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            color: #c8759f;
+
+            font-size: 2.8rem;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            margin: 15px 0;
+        }
+
+
+        .romance p {
+            color: #806875;
+
+            font-size: 1rem;
+
+            line-height: 1.9;
+
+            max-width: 650px;
+
+            margin: 0 auto;
+        }
+
+
+        .romance-flores {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+
+            color: #e9a6c8;
+
+            font-size: 1.5rem;
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            header {
+                padding: 25px 35px;
+            }
+
+
+            nav {
+                gap: 18px;
+            }
+
+
+            .pagina-doramas {
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+
+            .lista-doramas {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 20px;
+
+                padding: 25px 20px;
+            }
+
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+
+            .titulo-doramas h2 {
+                font-size: 3rem;
+            }
+
+
+            .lista-doramas {
+                grid-template-columns: 1fr;
+            }
+
+
+            .pagina-doramas {
+                padding:
+                    60px 20px 90px;
+            }
+
+
+            .romance {
+                padding:
+                    45px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+            Pop Universe
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+
+            <a href="animes.html">
+                Animes
+            </a>
+
+
+            <a href="jogos.html">
+                Jogos
+            </a>
+
+
+            <!-- DROPDOWN DORAMAS -->
+
+            <div class="menu-doramas">
+
+                <a href="doramas.html">
+                    Doramas
+                </a>
+
+
+                <div class="generos-doramas">
+
+
+                    <!-- ROMANCE -->
+
+                    <a href="doramasromance.html">
+                        Romance
+                    </a>
+
+
+                    <!-- COMÉDIA -->
+
+                    <a href="doramascomedia.html">
+                        Comédia
+                    </a>
+
+
+                    <!-- DRAMA -->
+
+                    <a href="#drama">
+                        Drama
+                    </a>
+
+
+                    <!-- AÇÃO -->
+
+                    <a href="#acao">
+                        Ação
+                    </a>
+
+
+                    <!-- THRILLER -->
+
+                    <a href="#thriller">
+                        Thriller
+                    </a>
+
+
+                    <!-- FANTASIA -->
+
+                    <a href="#fantasia">
+                        Fantasia
+                    </a>
+
+
+                    <!-- HISTÓRICO -->
+
+                    <a href="#historico">
+                        Histórico
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+            <a href="filmes.html">
+                Filmes
+            </a>
+
+
+            <a href="series.html">
+                Séries
+            </a>
+
+
+            <a href="musica.html">
+                Música
+            </a>
+
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         PÁGINA DOS DORAMAS
+    ========================================================= -->
+
+    <main class="pagina-doramas">
+
+
+        <!-- FLORES -->
+
+        <div class="flor flor-1">
+            🌸
+        </div>
+
+
+        <div class="flor flor-2">
+            🌷
+        </div>
+
+
+        <div class="flor flor-3">
+            ✿
+        </div>
+
+
+        <div class="flor flor-4">
+            🌸
+        </div>
+
+
+        <!-- TÍTULO -->
+
+        <div class="titulo-doramas">
+
+            <span>✿</span>
+
+            <h2>
+                Doramas
+            </h2>
+
+            <span>✿</span>
+
+        </div>
+
+
+        <!-- =====================================================
+             GÊNEROS
+        ====================================================== -->
+
+        <section class="lista-doramas">
+
+
+            <!-- ================= ROMANCE ================= -->
+
+            <article
+                class="genero-dorama genero-romance"
+                id="romance"
+            >
+
+                <h3>
+                    Romance
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Romance
+                        </h4>
+
+
+                        <div class="generos">
+                            Romance
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Romance.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- ================= COMÉDIA ================= -->
+
+            <article
+                class="genero-dorama"
+                id="comedia"
+            >
+
+                <h3>
+                    Comédia
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Comédia
+                        </h4>
+
+
+                        <div class="generos">
+                            Comédia
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Comédia.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- ================= DRAMA ================= -->
+
+            <article
+                class="genero-dorama"
+                id="drama"
+            >
+
+                <h3>
+                    Drama
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Drama
+                        </h4>
+
+
+                        <div class="generos">
+                            Drama
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Drama.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- ================= AÇÃO ================= -->
+
+            <article
+                class="genero-dorama"
+                id="acao"
+            >
+
+                <h3>
+                    Ação
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Ação
+                        </h4>
+
+
+                        <div class="generos">
+                            Ação
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Ação.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- ================= THRILLER ================= -->
+
+            <article
+                class="genero-dorama"
+                id="thriller"
+            >
+
+                <h3>
+                    Thriller
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Thriller
+                        </h4>
+
+
+                        <div class="generos">
+                            Thriller
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Thriller.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- ================= FANTASIA ================= -->
+
+            <article
+                class="genero-dorama"
+                id="fantasia"
+            >
+
+                <h3>
+                    Fantasia
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Fantasia
+                        </h4>
+
+
+                        <div class="generos">
+                            Fantasia
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Fantasia.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+            <!-- ================= HISTÓRICO ================= -->
+
+            <article
+                class="genero-dorama"
+                id="historico"
+            >
+
+                <h3>
+                    Histórico
+                </h3>
+
+
+                <div class="dorama-card">
+
+                    <div class="poster">
+
+                        <span>
+                            Poster do Dorama
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-dorama">
+
+                        <h4>
+                            Histórico
+                        </h4>
+
+
+                        <div class="generos">
+                            Histórico
+                        </div>
+
+
+                        <p class="descricao">
+                            Aqui ficará o dorama escolhido
+                            para representar o gênero Histórico.
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             SEÇÃO ESPECIAL DE ROMANCE
+        ====================================================== -->
+
+        <section class="romance">
+
+
+            <div class="romance-flores">
+
+                <span>🌸</span>
+                <span>✿</span>
+                <span>🌷</span>
+                <span>✿</span>
+                <span>🌸</span>
+
+            </div>
+
+
+            <h3>
+                Romance
+            </h3>
+
+
+            <p>
+                Uma seleção especial de histórias de amor,
+                encontros, desencontros e sentimentos.
+            </p>
+
+
+            <div class="romance-flores">
+
+                <span>🌷</span>
+                <span>✿</span>
+                <span>🌸</span>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

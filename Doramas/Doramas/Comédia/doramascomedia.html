@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Doramas Comédia | Pop Universe</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           CONFIGURAÇÕES GERAIS
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fffaf2;
+            color: #66545a;
+            font-family: Georgia, 'Times New Roman', serif;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            width: 100%;
+            padding: 28px 70px;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            border-bottom: 1px solid #f1dfd4;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #d98272;
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 2rem;
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #806c72;
+
+            text-decoration: none;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 1.5px;
+
+            transition: 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d98272;
+        }
+
+
+        /* =========================================================
+           MENU DORAMAS
+        ========================================================= */
+
+        .menu-doramas {
+            position: relative;
+        }
+
+        .generos-doramas {
+            position: absolute;
+
+            /*
+                IMPORTANTE:
+                Não existe espaço entre "Doramas"
+                e o submenu.
+            */
+
+            top: 100%;
+            left: 50%;
+
+            transform:
+                translateX(-50%)
+                translateY(8px);
+
+            min-width: 190px;
+
+            padding: 10px 0;
+
+            background: rgba(48, 38, 52, 0.98);
+
+            border: 1px solid #efb7a8;
+
+            border-radius:
+                0 0 12px 12px;
+
+            box-shadow:
+                0 12px 28px
+                rgba(75, 50, 55, 0.25);
+
+            display: flex;
+
+            flex-direction: column;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0.25s ease;
+
+            z-index: 2000;
+        }
+
+        .menu-doramas:hover .generos-doramas,
+        .menu-doramas:focus-within .generos-doramas {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
+
+        .generos-doramas a {
+
+            display: block;
+
+            padding: 9px 20px;
+
+            color: #fff0e9 !important;
+
+            text-decoration: none;
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 17px;
+
+            letter-spacing: 0.5px;
+
+            white-space: nowrap;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                padding-left 0.2s ease;
+        }
+
+        .generos-doramas a:hover {
+
+            background:
+                rgba(246, 182, 168, 0.15);
+
+            color: #ffffff !important;
+
+            padding-left: 25px;
+        }
+
+
+        /* =========================================================
+           PÁGINA
+        ========================================================= */
+
+        .pagina-comedia {
+
+            position: relative;
+
+            min-height: 100vh;
+
+            padding: 90px 60px 130px;
+
+            background:
+
+                radial-gradient(
+                    circle at 8% 10%,
+                    rgba(247, 231, 168, 0.38),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 92% 18%,
+                    rgba(191, 223, 242, 0.38),
+                    transparent 27%
+                ),
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(239, 169, 196, 0.18),
+                    transparent 35%
+                ),
+
+                #fffaf2;
+        }
+
+
+        /* =========================================================
+           ELEMENTOS DECORATIVOS
+        ========================================================= */
+
+        .adesivo {
+            position: absolute;
+
+            pointer-events: none;
+            user-select: none;
+
+            z-index: 0;
+
+            opacity: 0.65;
+        }
+
+        .adesivo-1 {
+            top: 75px;
+            left: 4%;
+
+            font-size: 3rem;
+
+            transform: rotate(-12deg);
+        }
+
+        .adesivo-2 {
+            top: 145px;
+            right: 5%;
+
+            font-size: 2.8rem;
+
+            transform: rotate(14deg);
+        }
+
+        .adesivo-3 {
+            top: 500px;
+            left: 2.5%;
+
+            font-size: 2rem;
+
+            transform: rotate(-15deg);
+        }
+
+        .adesivo-4 {
+            top: 820px;
+            right: 3%;
+
+            font-size: 3rem;
+
+            transform: rotate(12deg);
+        }
+
+        .adesivo-5 {
+            top: 1240px;
+            left: 5%;
+
+            font-size: 2.5rem;
+
+            transform: rotate(-10deg);
+        }
+
+        .adesivo-6 {
+            top: 1600px;
+            right: 5%;
+
+            font-size: 2.8rem;
+
+            transform: rotate(15deg);
+        }
+
+
+        /* =========================================================
+           CABEÇALHO DA PÁGINA
+        ========================================================= */
+
+        .cabecalho-comedia {
+
+            position: relative;
+
+            z-index: 1;
+
+            text-align: center;
+
+            max-width: 900px;
+
+            margin: 0 auto 75px;
+        }
+
+        .decoracao-titulo {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+
+            color: #e6a47f;
+
+            font-size: 1.5rem;
+
+            margin-bottom: 18px;
+        }
+
+        .cabecalho-comedia h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            color: #d98272;
+
+            font-size: 4.5rem;
+
+            font-weight: 600;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 18px;
+        }
+
+        .subtitulo-comedia {
+
+            color: #806c72;
+
+            font-family:
+                'Playfair Display',
+                Georgia,
+                serif;
+
+            font-size: 1.1rem;
+
+            line-height: 1.9;
+
+            font-style: italic;
+
+            max-width: 700px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           FRASEZINHA DECORATIVA
+        ========================================================= */
+
+        .mini-caos {
+
+            display: inline-block;
+
+            margin-top: 24px;
+
+            padding: 7px 17px;
+
+            background: #f7e7a8;
+
+            color: #765d42;
+
+            border-radius: 30px;
+
+            font-size: 0.78rem;
+
+            letter-spacing: 1.5px;
+
+            transform: rotate(-2deg);
+
+            box-shadow:
+                0 5px 15px
+                rgba(118, 93, 66, 0.08);
+        }
+
+
+        /* =========================================================
+           DIVISOR
+        ========================================================= */
+
+        .divisor-comedia {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            max-width: 650px;
+
+            margin: 0 auto 70px;
+
+            color: #e6a47f;
+
+            font-size: 1.15rem;
+        }
+
+        .divisor-comedia::before,
+        .divisor-comedia::after {
+
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #efd2c6
+                );
+        }
+
+        .divisor-comedia::after {
+
+            background:
+                linear-gradient(
+                    to left,
+                    transparent,
+                    #efd2c6
+                );
+        }
+
+
+        /* =========================================================
+           LISTA
+        ========================================================= */
+
+        .lista-comedia {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 1150px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 55px;
+        }
+
+
+        /* =========================================================
+           CARD
+        ========================================================= */
+
+        .dorama-comedia {
+
+            display: grid;
+
+            grid-template-columns: 330px 1fr;
+
+            background:
+                rgba(255, 255, 255, 0.96);
+
+            border: 1px solid #f0ded6;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 12px 35px
+                rgba(130, 95, 85, 0.10);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+            position: relative;
+        }
+
+        .dorama-comedia:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(130, 95, 85, 0.17);
+        }
+
+
+        /* =========================================================
+           ADESIVO DO CARD
+        ========================================================= */
+
+        .dorama-comedia::after {
+
+            content: "✦";
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 18px;
+
+            color: #e9a4bb;
+
+            font-size: 1.3rem;
+
+            opacity: 0.65;
+
+            z-index: 3;
+        }
+
+
+        /* =========================================================
+           POSTER
+        ========================================================= */
+
+        .poster-comedia {
+
+            height: 500px;
+
+            background: #f8eee7;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .poster-comedia img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: contain;
+
+            object-position: center;
+
+            transition:
+                transform 0.5s ease;
+        }
+
+        .dorama-comedia:hover
+        .poster-comedia img {
+
+            transform: scale(1.025);
+        }
+
+
+        /* =========================================================
+           CORES ESPECÍFICAS DOS POSTERS
+        ========================================================= */
+
+        .poster-vincenzo {
+            background: #e7e4df;
+        }
+
+        .poster-beleza {
+            background: #f8dff0;
+        }
+
+        .poster-rainha {
+            background: #f3dfb4;
+        }
+
+        .poster-hong {
+            background: #d8edf2;
+        }
+
+        .poster-pretendente {
+            background: #d8eef7;
+        }
+
+
+        /* =========================================================
+           INFORMAÇÕES
+        ========================================================= */
+
+        .info-comedia {
+
+            padding: 45px 50px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .numero-dorama {
+
+            color: #d89a88;
+
+            font-size: 0.78rem;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .info-comedia h2 {
+
+            color: #c87868;
+
+            font-family:
+                'Cormorant Garamond',
+                Georgia,
+                serif;
+
+            font-size: 2.7rem;
+
+            font-weight: 600;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+
+            padding-right: 25px;
+        }
+
+        .ano-dorama {
+
+            color: #927d82;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+        .generos-comedia {
+
+            color: #d58b7c;
+
+            font-size: 0.88rem;
+
+            letter-spacing: 0.7px;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================================================
+           ETIQUETAS
+        ========================================================= */
+
+        .etiqueta {
+
+            display: inline-block;
+
+            align-self: flex-start;
+
+            padding: 6px 13px;
+
+            margin-bottom: 25px;
+
+            border-radius: 20px;
+
+            font-size: 0.72rem;
+
+            letter-spacing: 1px;
+
+            font-weight: 600;
+        }
+
+        .etiqueta-vincenzo {
+            background: #eeeae4;
+            color: #554b4c;
+        }
+
+        .etiqueta-beleza {
+            background: #f8dce9;
+            color: #a95f7d;
+        }
+
+        .etiqueta-rainha {
+            background: #f7e7b7;
+            color: #86672d;
+        }
+
+        .etiqueta-hong {
+            background: #dceff3;
+            color: #4f7e87;
+        }
+
+        .etiqueta-pretendente {
+            background: #dceefa;
+            color: #527d99;
+        }
+
+
+        /* =========================================================
+           TÍTULOS INTERNOS
+        ========================================================= */
+
+        .titulo-info {
+
+            color: #c87868;
+
+            font-family:
+                'Playfair Display',
+                Georgia,
+                serif;
+
+            font-size: 1rem;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================================
+           SINOPSE
+        ========================================================= */
+
+        .sinopse {
+
+            color: #806c72;
+
+            font-size: 0.96rem;
+
+            line-height: 1.9;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================================
+           ELENCO
+        ========================================================= */
+
+        .elenco {
+
+            color: #806c72;
+
+            font-size: 0.88rem;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================================
+           DETALHES
+        ========================================================= */
+
+        .detalhes-comedia {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px 25px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #f0e0d9;
+        }
+
+        .detalhes-comedia p {
+
+            color: #806c72;
+
+            font-size: 0.84rem;
+
+            line-height: 1.6;
+        }
+
+        .detalhes-comedia strong {
+
+            color: #c87868;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           FRASE FINAL
+        ========================================================= */
+
+        .frase-comedia {
+
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 800px;
+
+            margin: 100px auto 0;
+
+            padding: 55px 40px;
+
+            text-align: center;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.97),
+                    rgba(255,248,235,0.97)
+                );
+
+            border: 1px solid #f0ded6;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(130, 95, 85, 0.08);
+        }
+
+        .frase-comedia .decoracao-final {
+
+            color: #e6a47f;
+
+            font-size: 1.6rem;
+
+            letter-spacing: 8px;
+
+            margin-bottom: 20px;
+        }
+
+        .frase-comedia p {
+
+            color: #806c72;
+
+            font-family:
+                'Playfair Display',
+                Georgia,
+                serif;
+
+            font-size: 1.15rem;
+
+            line-height: 1.9;
+
+            font-style: italic;
+        }
+
+
+        /* =========================================================
+           RESPONSIVIDADE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            header {
+
+                padding: 25px 35px;
+            }
+
+            nav {
+
+                gap: 18px;
+            }
+
+            .pagina-comedia {
+
+                padding-left: 30px;
+
+                padding-right: 30px;
+            }
+
+            .dorama-comedia {
+
+                grid-template-columns:
+                    270px 1fr;
+            }
+
+            .poster-comedia {
+
+                height: 430px;
+            }
+
+            .poster-comedia img {
+
+                height: 100%;
+            }
+
+            .info-comedia {
+
+                padding: 35px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 20px;
+
+                padding: 25px 20px;
+            }
+
+            nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 14px;
+            }
+
+            .generos-doramas {
+
+                left: 50%;
+            }
+
+            .pagina-comedia {
+
+                padding:
+                    60px 20px 90px;
+            }
+
+            .cabecalho-comedia h1 {
+
+                font-size: 3.2rem;
+
+                letter-spacing: 3px;
+            }
+
+            .dorama-comedia {
+
+                grid-template-columns: 1fr;
+            }
+
+            .poster-comedia {
+
+                height: 500px;
+            }
+
+            .poster-comedia img {
+
+                height: 100%;
+            }
+
+            .info-comedia {
+
+                padding: 30px 25px;
+            }
+
+            .info-comedia h2 {
+
+                font-size: 2.3rem;
+            }
+
+            .detalhes-comedia {
+
+                grid-template-columns: 1fr;
+            }
+
+            .frase-comedia {
+
+                padding:
+                    45px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
+
+    <header>
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Pop Universe
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="animes.html">
+                Animes
+            </a>
+
+            <a href="jogos.html">
+                Jogos
+            </a>
+
+
+            <!-- =================================================
+                 MENU DORAMAS
+            ================================================== -->
+
+            <div class="menu-doramas">
+
+                <a href="doramas.html">
+                    Doramas
+                </a>
+
+
+                <div class="generos-doramas">
+
+                    <a href="doramasromance.html">
+                        Romance
+                    </a>
+
+                    <a href="doramascomedia.html">
+                        Comédia
+                    </a>
+
+                    <a href="doramas.html#drama">
+                        Drama
+                    </a>
+
+                    <a href="doramas.html#acao">
+                        Ação
+                    </a>
+
+                    <a href="doramas.html#thriller">
+                        Thriller
+                    </a>
+
+                    <a href="doramas.html#fantasia">
+                        Fantasia
+                    </a>
+
+                    <a href="doramas.html#historico">
+                        Histórico
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="filmes.html">
+                Filmes
+            </a>
+
+            <a href="series.html">
+                Séries
+            </a>
+
+            <a href="musica.html">
+                Música
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         PÁGINA DE COMÉDIA
+    ========================================================= -->
+
+    <main class="pagina-comedia">
+
+
+        <!-- =====================================================
+             ELEMENTOS DECORATIVOS
+        ====================================================== -->
+
+        <div class="adesivo adesivo-1">
+            🎀
+        </div>
+
+        <div class="adesivo adesivo-2">
+            ✨
+        </div>
+
+        <div class="adesivo adesivo-3">
+            💭
+        </div>
+
+        <div class="adesivo adesivo-4">
+            ⭐
+        </div>
+
+        <div class="adesivo adesivo-5">
+            🍒
+        </div>
+
+        <div class="adesivo adesivo-6">
+            🎈
+        </div>
+
+
+        <!-- =====================================================
+             CABEÇALHO
+        ====================================================== -->
+
+        <section class="cabecalho-comedia">
+
+
+            <div class="decoracao-titulo">
+
+                <span>🎀</span>
+
+                <span>✦</span>
+
+                <span>😂</span>
+
+                <span>✦</span>
+
+                <span>🎀</span>
+
+            </div>
+
+
+            <h1>
+                Comédia
+            </h1>
+
+
+            <p class="subtitulo-comedia">
+
+                Histórias que transformam encontros inesperados,
+                situações absurdas e pequenos desastres
+                em algumas das melhores risadas.
+
+            </p>
+
+
+            <div class="mini-caos">
+
+                CUTE CHAOS · RISADAS GARANTIDAS
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DIVISOR
+        ====================================================== -->
+
+        <div class="divisor-comedia">
+
+            ✦ 😂 ✦
+
+        </div>
+
+
+        <!-- =====================================================
+             LISTA DOS 5 DORAMAS
+        ====================================================== -->
+
+        <section class="lista-comedia">
+
+
+            <!-- =================================================
+                 VINCENZO
+            ================================================== -->
+
+            <article class="dorama-comedia">
+
+
+                <div class="poster-comedia poster-vincenzo">
+
+                    <img
+                        src="imagens/vincenzo.jpg"
+                        alt="Pôster de Vincenzo"
+                    >
+
+                </div>
+
+
+                <div class="info-comedia">
+
+
+                    <div class="numero-dorama">
+                        Comédia · 01
+                    </div>
+
+
+                    <h2>
+                        Vincenzo
+                    </h2>
+
+
+                    <p class="ano-dorama">
+                        2021 · 20 episódios
+                    </p>
+
+
+                    <div class="generos-comedia">
+
+                        Drama · Comédia · Ação · Crime · Romance
+
+                    </div>
+
+
+                    <div class="etiqueta etiqueta-vincenzo">
+
+                        🖤 HUMOR NEGRO · MÁFIA · CAOS
+
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+
+                    <p class="sinopse">
+
+                        Vincenzo Cassano é um advogado ítalo-coreano
+                        ligado à máfia que retorna à Coreia do Sul.
+                        Ao se envolver em uma disputa contra um grande
+                        conglomerado, ele passa a enfrentar seus
+                        adversários utilizando métodos pouco
+                        convencionais, enquanto situações cada vez
+                        mais absurdas surgem ao seu redor.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+
+                    <p class="elenco">
+
+                        Song Joong-ki · Jeon Yeo-been · Ok Taec-yeon
+
+                    </p>
+
+
+                    <div class="detalhes-comedia">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            20
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 BELEZA VERDADEIRA
+            ================================================== -->
+
+            <article class="dorama-comedia">
+
+
+                <div class="poster-comedia poster-beleza">
+
+                    <img
+                        src="imagens/beleza-verdadeira.jpg"
+                        alt="Pôster de Beleza Verdadeira"
+                    >
+
+                </div>
+
+
+                <div class="info-comedia">
+
+
+                    <div class="numero-dorama">
+                        Comédia · 02
+                    </div>
+
+
+                    <h2>
+                        Beleza Verdadeira
+                    </h2>
+
+
+                    <p class="ano-dorama">
+                        2020–2021 · 16 episódios
+                    </p>
+
+
+                    <div class="generos-comedia">
+
+                        Comédia romântica · Romance ·
+                        Coming-of-age · Cotidiano
+
+                    </div>
+
+
+                    <div class="etiqueta etiqueta-beleza">
+
+                        💄 ROM-COM · ESCOLA · CAOS ADOLESCENTE
+
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+
+                    <p class="sinopse">
+
+                        Lim Ju-kyung aprende a usar maquiagem através
+                        de tutoriais online depois de enfrentar
+                        inseguranças relacionadas à sua aparência.
+                        Ao mudar de escola, ela passa a ser vista de
+                        uma maneira completamente diferente, mas precisa
+                        esconder seu rosto sem maquiagem enquanto
+                        enfrenta novas amizades, sentimentos e
+                        situações inesperadas.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+
+                    <p class="elenco">
+
+                        Moon Ga-young · Cha Eun-woo ·
+                        Hwang In-youp · Park Yoo-na
+
+                    </p>
+
+
+                    <div class="detalhes-comedia">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            16
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 SR. RAINHA
+            ================================================== -->
+
+            <article class="dorama-comedia">
+
+
+                <div class="poster-comedia poster-rainha">
+
+                    <img
+                        src="imagens/sr-rainha.jpg"
+                        alt="Pôster de Sr. Rainha"
+                    >
+
+                </div>
+
+
+                <div class="info-comedia">
+
+
+                    <div class="numero-dorama">
+                        Comédia · 03
+                    </div>
+
+
+                    <h2>
+                        Sr. Rainha
+                    </h2>
+
+
+                    <p class="ano-dorama">
+                        2020–2021 · 20 episódios
+                    </p>
+
+
+                    <div class="generos-comedia">
+
+                        Comédia · Histórico · Romance ·
+                        Fantasia · Troca de corpos
+
+                    </div>
+
+
+                    <div class="etiqueta etiqueta-rainha">
+
+                        👑 CAOS REAL · TROCA DE CORPOS · HISTÓRICO
+
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+
+                    <p class="sinopse">
+
+                        Jang Bong-hwan é um homem da era moderna
+                        cuja consciência acaba inexplicavelmente
+                        no corpo da futura rainha Kim So-yong,
+                        durante a dinastia Joseon. Preso em uma
+                        realidade completamente diferente da sua,
+                        ele precisa lidar com a corte, o rei e uma
+                        série de situações absurdas enquanto tenta
+                        entender como voltar à sua própria vida.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+
+                    <p class="elenco">
+
+                        Shin Hye-sun · Kim Jung-hyun
+
+                    </p>
+
+
+                    <div class="detalhes-comedia">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            20
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 HONG, A INFILTRADA
+            ================================================== -->
+
+            <article class="dorama-comedia">
+
+
+                <div class="poster-comedia poster-hong">
+
+                    <img
+                        src="imagens/hong-a-infiltrada.jpg"
+                        alt="Pôster de Hong, A Infiltrada"
+                    >
+
+                </div>
+
+
+                <div class="info-comedia">
+
+
+                    <div class="numero-dorama">
+                        Comédia · 04
+                    </div>
+
+
+                    <h2>
+                        Hong, A Infiltrada
+                    </h2>
+
+
+                    <p class="ano-dorama">
+                        2026
+                    </p>
+
+
+                    <div class="generos-comedia">
+
+                        Comédia · Policial · Drama
+
+                    </div>
+
+
+                    <div class="etiqueta etiqueta-hong">
+
+                        🕵️‍♀️ INFILTRAÇÃO · EX · CAOS NO ESCRITÓRIO
+
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+
+                    <p class="sinopse">
+
+                        Uma investigadora se infiltra em uma corretora
+                        de valores para investigar suspeitas de corrupção.
+                        O plano se torna ainda mais complicado quando
+                        ela descobre que o novo CEO da empresa é seu
+                        ex-namorado. Entre a investigação, o ambiente
+                        de trabalho e encontros inesperados, manter
+                        o disfarce se torna cada vez mais difícil.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+
+                    <p class="elenco">
+
+                        Park Shin-hye · Ko Kyung-pyo · Ha Yoon-kyoung
+
+                    </p>
+
+
+                    <div class="detalhes-comedia">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Ano:</strong>
+                            2026
+                        </p>
+
+                        <p>
+                            <strong>Ambientação:</strong>
+                            Anos 1990
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 PRETENDENTE SURPRESA
+            ================================================== -->
+
+            <article class="dorama-comedia">
+
+
+                <div class="poster-comedia poster-pretendente">
+
+                    <img
+                        src="imagens/pretendente-surpresa.jpg"
+                        alt="Pôster de Pretendente Surpresa"
+                    >
+
+                </div>
+
+
+                <div class="info-comedia">
+
+
+                    <div class="numero-dorama">
+                        Comédia · 05
+                    </div>
+
+
+                    <h2>
+                        Pretendente Surpresa
+                    </h2>
+
+
+                    <p class="ano-dorama">
+                        2022 · 12 episódios
+                    </p>
+
+
+                    <div class="generos-comedia">
+
+                        Comédia romântica · Romance · Drama
+
+                    </div>
+
+
+                    <div class="etiqueta etiqueta-pretendente">
+
+                        💕 ROM-COM · CEO · ENCONTRO ÀS CEGAS
+
+                    </div>
+
+
+                    <h3 class="titulo-info">
+                        Sinopse
+                    </h3>
+
+
+                    <p class="sinopse">
+
+                        Shin Ha-ri aceita substituir sua amiga em um
+                        encontro às cegas, planejando fazer o homem
+                        desistir rapidamente. O plano muda quando ela
+                        descobre que seu pretendente é Kang Tae-moo,
+                        o CEO da empresa onde trabalha. Uma identidade
+                        escondida e uma série de encontros inesperados
+                        transformam uma situação planejada em algo
+                        muito mais complicado.
+
+                    </p>
+
+
+                    <h3 class="titulo-info">
+                        Elenco principal
+                    </h3>
+
+
+                    <p class="elenco">
+
+                        Ahn Hyo-seop · Kim Se-jeong ·
+                        Kim Min-kyu · Seol In-ah
+
+                    </p>
+
+
+                    <div class="detalhes-comedia">
+
+                        <p>
+                            <strong>País:</strong>
+                            Coreia do Sul
+                        </p>
+
+                        <p>
+                            <strong>Episódios:</strong>
+                            12
+                        </p>
+
+                        <p>
+                            <strong>Duração:</strong>
+                            cerca de 1h por episódio
+                        </p>
+
+                        <p>
+                            <strong>Formato:</strong>
+                            Série
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             FRASE FINAL
+        ====================================================== -->
+
+        <section class="frase-comedia">
+
+
+            <div class="decoracao-final">
+
+                🎀 ✦ 😂 ✦ 🎀
+
+            </div>
+
+
+            <p>
+
+                Porque algumas histórias não precisam fazer sentido
+                para fazer a gente rir.
+
+            </p>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>

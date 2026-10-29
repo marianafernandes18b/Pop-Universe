@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jogos | Pop Universe</title>
+
+    <!-- Bootstrap 5.3 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* ===== CONFIGURAÇÕES GERAIS ===== */
+
+        :root {
+            --background: #08080b;
+            --surface: #151116;
+            --surface-hover: #20151b;
+            --text: #f5f5f5;
+            --muted: #c3c3ce;
+            --red: #ff3048;
+            --red-light: #ff5368;
+            --border: rgba(255, 255, 255, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    ellipse at top,
+                    rgba(255, 48, 72, 0.10),
+                    transparent 55%
+                ),
+                var(--background);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+
+        /* ===== CABEÇALHO ===== */
+
+        header {
+            padding: 30px 5%;
+            background: rgba(12, 12, 16, 0.96);
+            border-bottom: 1px solid rgba(255, 48, 72, 0.35);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        header h1 span {
+            color: var(--red-light);
+        }
+
+        header h2 {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* ===== NAVEGAÇÃO ===== */
+
+        .site-nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .site-nav a {
+            color: #d0d0d8;
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            transition: color 0.25s ease;
+        }
+
+        .site-nav a:hover,
+        .site-nav a:focus-visible,
+        .site-nav a[aria-current="page"] {
+            color: var(--red-light);
+        }
+
+        /* ===== BANNER PRINCIPAL ===== */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(65px, 10vw, 120px) 20px;
+            text-align: center;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255, 48, 72, 0.10),
+                    transparent 45%,
+                    rgba(70, 20, 35, 0.20)
+                );
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero::before {
+            content: "✦";
+            position: absolute;
+            top: 18%;
+            left: 10%;
+            color: rgba(255, 83, 104, 0.45);
+            font-size: 2rem;
+        }
+
+        .hero::after {
+            content: "⌘";
+            position: absolute;
+            right: 10%;
+            bottom: 18%;
+            color: rgba(255, 83, 104, 0.35);
+            font-size: 2.5rem;
+        }
+
+        .hero h2 {
+            margin-bottom: 18px;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .hero h2 span {
+            color: var(--red-light);
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+        }
+
+        .hero-decoration {
+            margin-top: 25px;
+            color: var(--red-light);
+            letter-spacing: 8px;
+        }
+
+        /* ===== CONTEÚDO ===== */
+
+        main.container {
+            max-width: 1200px;
+            padding-top: 50px;
+            padding-bottom: 80px;
+        }
+
+        /* ===== TÍTULO DAS RECOMENDAÇÕES ===== */
+
+        .jogos-recomendados {
+            margin-bottom: 30px;
+        }
+
+        .jogos-recomendados h2 {
+            margin-bottom: 12px;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+        }
+
+        .titulo-detalhe {
+            width: 65px;
+            height: 3px;
+            background: var(--red);
+            border-radius: 10px;
+        }
+
+        .section-description {
+            margin-top: 15px;
+            color: var(--muted);
+        }
+
+        /* ===== CARD DOS JOGOS ===== */
+
+        .game-card {
+                        width: 100%;
+                        max-width: 900px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        height: 100%;
+                        overflow: hidden;
+                        background: var(--surface);
+                        color: var(--text);
+                        border: 1px solid var(--border);
+                        border-radius: 14px;
+                        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+                        transition:
+                            transform 0.3s ease,
+                            border-color 0.3s ease,
+                            box-shadow 0.3s ease;
+}
+        .game-card:hover {
+            transform: translateY(-5px);
+            background: var(--surface-hover);
+            border-color: rgba(255, 48, 72, 0.65);
+            box-shadow: 0 18px 45px rgba(255, 48, 72, 0.10);
+        }
+
+        /* ===== IMAGEM DO JOGO ===== */
+
+                .game-card > .game-image {
+
+                                            display: block;
+                                            width: 100%;
+                                            max-width: 980px;
+                                            height: auto;
+                                            object-fit: contain;
+                                            margin: 0 auto;
+                                            background: #08080b;
+                                            border-bottom: 1px solid rgba(255, 48, 72, 0.25);
+            }
+
+        
+
+        .game-card .card-body {
+            padding: clamp(22px, 4vw, 35px);
+        }
+
+        .game-tag {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 5px 11px;
+            color: var(--red-light);
+            background: rgba(255, 48, 72, 0.10);
+            border: 1px solid rgba(255, 48, 72, 0.35);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .game-card .card-title {
+            margin-bottom: 15px;
+            color: var(--text);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+        }
+
+        .game-card .card-text {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== BOTÃO BOOTSTRAP PERSONALIZADO ===== */
+
+        .btn-requiem {
+            margin-top: 12px;
+            padding: 11px 24px;
+            color: var(--text);
+            background: transparent;
+            border: 1px solid var(--red);
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .btn-requiem:hover,
+        .btn-requiem:active {
+            color: #fff;
+            background: var(--red);
+            border-color: var(--red);
+            box-shadow: 0 0 22px rgba(255, 48, 72, 0.25);
+        }
+
+        .btn-requiem:focus-visible {
+            color: #fff;
+            background: var(--red);
+            outline: 2px solid white;
+            outline-offset: 4px;
+            box-shadow: none;
+        }
+
+        /* ===== COLLAPSE ===== */
+
+        .game-details {
+            margin-top: 25px;
+            padding: 22px;
+            background: rgba(0, 0, 0, 0.25);
+            border-left: 3px solid var(--red);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .game-details p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.9;
+        }
+
+        /* ===== RODAPÉ ===== */
+
+        footer {
+            padding: 25px 20px;
+            color: var(--muted);
+            background: #0c0c10;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer span {
+            color: var(--red-light);
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+
+        @media (max-width: 768px) {
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .site-nav {
+                justify-content: center;
+                gap: 12px 20px;
+            }
+
+            .hero::before {
+                left: 4%;
+            }
+
+            .hero::after {
+                right: 4%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 25px 16px;
+            }
+
+            .site-nav a {
+                font-size: 1rem;
+            }
+
+            main.container {
+                padding-top: 35px;
+                padding-bottom: 50px;
+            }
+
+            .game-card .card-body {
+                padding: 22px;
+            }
+
+            .game-details {
+                padding: 17px;
+            }
+        }
+
+        /* ===== ACESSIBILIDADE ===== */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-content">
+
+            <div class="brand">
+                <h1>Pop <span>Universe</span></h1>
+                <h2>Jogos</h2>
+            </div>
+
+            <nav class="site-nav" aria-label="Navegação principal">
+                <a href="../index.html">Início</a>
+                <a href="../Animes/animes.html">Animes</a>
+                <a href="jogos.html" aria-current="page">Jogos</a>
+                <a href="../Doramas/Doramas/doramas.html">Doramas</a>
+                <a href="../Filmes/filmes.html">Filmes</a>
+                <a href="../Series/series.html">Séries</a>
+                <a href="../Musica/musica.html">Música</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- BANNER -->
+    <section class="hero" aria-labelledby="titulo-jogos">
+        <h2 id="titulo-jogos">Universe <span>of Games</span></h2>
+
+        <p>
+            Explore universos, conheça personagens e descubra histórias
+            inesquecíveis. Da ação frenética ao terror de tirar o fôlego,
+            existe um jogo para cada aventura.
+        </p>
+
+        <div class="hero-decoration" aria-hidden="true">
+            ✦ ─────── 🎮 ─────── ✦
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+
+        <!-- TÍTULO DAS RECOMENDAÇÕES -->
+        <section aria-labelledby="titulo-recomendados">
+
+            <div class="jogos-recomendados">
+                <h2 id="titulo-recomendados">Jogos recomendados</h2>
+                <div class="titulo-detalhe"></div>
+
+                <p class="section-description">
+                    Confira alguns títulos que merecem um lugar na sua lista.
+                </p>
+            </div>
+
+            <!-- GRID RESPONSIVO DO BOOTSTRAP -->
+            <div class="row g-4">
+
+                <!-- RESIDENT EVIL REQUIEM -->
+                    <div class="col-12 d-flex justify-content-center"></div>
+                    <article class="card game-card">
+
+                        <!-- IMAGEM DO JOGO -->
+                        <img
+                  
+                            src="./imagens/resident-evil-requiem.jpg.jpg"
+                            class="game-image"
+                            alt="Arte promocional de Resident Evil Requiem"
+                            loading="lazy"
+    >
+
+                        <div class="card-body">
+
+                            <span class="game-tag">
+                                Survival Horror
+                            </span>
+
+                            <h3 class="card-title">
+                                Resident Evil Requiem
+                            </h3>
+
+                            <p class="card-text">
+                                O pesadelo retorna a Raccoon City em uma
+                                nova jornada de terror, investigação
+                                e sobrevivência.
+                            </p>
+
+                            <button
+                                class="btn btn-requiem"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#detalhesRequiem"
+                                aria-expanded="false"
+                                aria-controls="detalhesRequiem">
+                                Ver mais
+                            </button>
+
+                            <div
+                                class="collapse game-details"
+                                id="detalhesRequiem">
+
+                                <p>
+                                    Desenvolvido pela Capcom, Resident Evil
+                                    Requiem acompanha Grace Ashcroft,
+                                    analista do FBI, e Leon S. Kennedy,
+                                    agente veterano, em uma jornada marcada
+                                    por mistérios, criaturas aterrorizantes
+                                    e segredos ligados ao incidente de
+                                    Raccoon City.
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+
+                <!-- OUTROS JOGOS PODEM SER ADICIONADOS AQUI -->
+
+            </div>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>
+            <span>POP UNIVERSE</span> · Um universo de histórias
+        </p>
+    </footer>
+
+    <!-- Bootstrap JavaScript Bundle: necessário para o Collapse -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
